@@ -16,12 +16,8 @@ jobs:
         with:
           gradle-version: 8.7
       - name: Build debug APK
-        run: |
-          DIR=$(dirname "$(find . -name settings.gradle.kts | head -n 1)")
-          echo "Projeto em: $DIR"
-          cd "$DIR"
-          gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: GameTime-debug-apk
-          path: "**/build/outputs/apk/debug/app-debug.apk"
+          path: app/build/outputs/apk/debug/app-debug.apk
